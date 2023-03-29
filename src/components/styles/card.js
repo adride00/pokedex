@@ -97,7 +97,9 @@ export const font = {
     fontSize: '1.5rem',
     fontWeight: 'bold',
     textShadow: '0 0 5px #000000',
-    color: 'white'
+    color: 'white',
+    letterSpacing: '3px',
+    textTransform: 'capitalize'
 }
 
 export const stats = {
@@ -106,12 +108,7 @@ export const stats = {
 
 // styles for hover in card
 
-export const hover = {
-    '&:hover': {
-        transform: 'scale(1.1)',
-        transition: 'all 0.5s ease-in-out',
-    }
-}
+
 
 
 
