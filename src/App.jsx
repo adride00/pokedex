@@ -1,10 +1,15 @@
 
-
+import NavBar from './components/NavBar'
+import ListPokemons from './components/ListPokemons'
+import './App.css'
 function App() {
 
   return (
     <>
-      <h1>Pokedex</h1>
+      <main className="vw-100 vh-100">
+        <NavBar />
+        <ListPokemons />
+      </main>
     </>
   )
 }
