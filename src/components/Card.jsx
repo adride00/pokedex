@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import {typesPokemons, font, stats} from './styles/card.js'
-
+import BadgeStats from './BadgeStats.jsx'
 const Card = ({pokemon}) => {
 
   const [dataPokemon, setDataPokemon] = useState([])
-  const [tipoPokemon, setTipoPokemon] = useState('') 
-
+  const [tipoPokemon, setTipoPokemon] = useState([]) 
+  const [stats, setStats] = useState([])
 
   useEffect(() => {
     if(!pokemon) return
@@ -20,6 +20,25 @@ const Card = ({pokemon}) => {
             const typeStyle = typesPokemons.find(type => type.nombre === typeName)
           
             setTipoPokemon(typeStyle.style)
+            setStats([
+                {
+                    name: 'HP',
+                    value: data?.stats[0].base_stat,
+                    icon: 'src/assets/heart-attack.png'
+                },
+                {
+                    name: 'Attack',
+                    value: data?.stats[1].base_stat,
+                    icon: 'src/assets/battle.png'
+                },
+                {
+                    name: 'Defense',
+                    value: data?.stats[2].base_stat,
+                    icon: 'src/assets/defence.png'
+                }
+
+                
+            ])
             
         })
   }, []);
@@ -32,7 +51,7 @@ const Card = ({pokemon}) => {
                 <div>
                     <img src="src/assets/pokebola.png" alt="" width="25" />
                 </div>
-                <span>
+                <span className="fw-bold">
                     # {dataPokemon.id}
                 </span>
             </div>
@@ -41,21 +60,9 @@ const Card = ({pokemon}) => {
                 <h5 className="card-title text-center fw-bolder" style={font}>{dataPokemon.name}</h5>
                 <div className=" text-center">
                 <div className="row gap-2 d-flex justify-content-center">
-                    <div className="col-3 bg-light-subtle rounded-3 border w-25">
-                    <i><img src="src/assets/battle.png" width="25" alt="" /></i>
-                    <p className="" style={stats}>Attack</p>
-                    <p></p>
-                    </div>
-                    <div className="col-3 bg-light-subtle rounded-3 border">
-                    <i><img src="src/assets/defence.png" width="25" alt="" /></i>
-                    <p className="" style={stats}>Defense</p>
-                    <p></p>
-                    </div>
-                    <div className="col-3 bg-light-subtle rounded-3 border">
-                    <i><img src="src/assets/heart-attack.png" width="25" alt="" /></i>
-                    <p className="" style={stats}>Salud</p>
-                    <p></p>
-                    </div>
+                    {
+                        stats.map((stat, index) => <BadgeStats key={index} stat={stat} />)
+                    }
                 </div>
                 </div>
             </div>
