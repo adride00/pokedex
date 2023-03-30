@@ -56,7 +56,7 @@ const Card = ({pokemon}) => {
                     # {dataPokemon.id}
                 </span>
             </div>
-            <img src={dataPokemon.sprites?.other.dream_world.front_default} width='150px' height='150px' className="p-3 bg-ligth d-flex align-items-center" alt="..." />
+            <img src={dataPokemon.sprites?.other.dream_world.front_default ? dataPokemon.sprites?.other.dream_world.front_default : dataPokemon.sprites?.front_default} width='150px' height='150px' className="p-3 bg-ligth d-flex align-items-center" alt="..." />
             <div className="card-body w-100">
                 <h5 className="card-title text-center fw-bolder" style={font}>{dataPokemon.name}</h5>
                 <div className=" text-center">
