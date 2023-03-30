@@ -1,9 +1,10 @@
 import React from 'react';
 import {stats} from './styles/card.js'
+
 export default class BadgeStats extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props)
+        
         this.state = {
             stats: []
         }

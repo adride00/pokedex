@@ -1,6 +1,7 @@
 
 import NavBar from './components/NavBar'
 import ListPokemons from './components/ListPokemons'
+import Search from './components/Search'
 import './App.css'
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <main className="vw-100 vh-100">
         <NavBar />
+        <Search />
         <ListPokemons />
       </main>
     </>
