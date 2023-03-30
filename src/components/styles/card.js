@@ -121,6 +121,47 @@ export const typesPokemons = [
             backgroundColor: '#a38c21',
             color: '#212121'
         }
+    },
+    {
+        nombre: 'fairy',
+        style: {
+            background: 'linear-gradient(180deg, #fdb9e9 50%, #c47ba3 50%)',
+            backgroundColor: '#fdb9e9',
+            color: '#212121'
+        }
+        
+    },
+    {
+        nombre: 'shadow',
+        style: {
+            background: 'linear-gradient(180deg, #9f9f9f 50%, #6d6d6d 50%)',
+            backgroundColor: '#9f9f9f',
+            color: '#212121'
+        }
+    },
+    {
+        nombre: 'unknown',
+        style: {
+            background: 'linear-gradient(180deg, #9f9f9f 50%, #6d6d6d 50%)',
+            backgroundColor: '#9f9f9f',
+            color: '#212121'
+        }
+    },
+    {
+        nombre: 'steel',
+        style: {
+            background: 'linear-gradient(180deg, #9eb7b8 50%, #6d7c7c 50%)',
+            backgroundColor: '#9eb7b8',
+            color: '#212121'
+        }
+    },
+    {
+        nombre: 'dark',
+        style: {
+            background: 'linear-gradient(180deg, #707070 50%, #4e4e4e 50%)',
+            backgroundColor: '#707070',
+            color: '#212121'
+        }
     }
 
 ]

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Card from './Card.jsx'
 import Search from './Search'
-
+import ListTypes from './ListTypes'
 const ListPokemons = () => {
 
   const [pokemons, setPokemons] = useState([])
@@ -22,6 +22,7 @@ const ListPokemons = () => {
     <>
         
         <Search setPokemons={setPokemons} />
+        <ListTypes />
         <main className=''>
           <div className="container grid">
             <div className="row g-col-4">
