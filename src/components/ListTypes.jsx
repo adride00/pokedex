@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-
+import getData from '../helpers/getData'
 import Types from './Types.jsx'
 
 const ListTypes = ({setPokemons}) => {
@@ -19,18 +19,20 @@ const ListTypes = ({setPokemons}) => {
     }, [])
 
     useEffect(() => {
-        console.log(typeFilters)
+        
         if(!typeFilters) return
-        axios.get(`https://pokeapi.co/api/v2/type/${typeFilters}`)
+        
+        typeFilters.forEach(type => {
+            getData(`https://pokeapi.co/api/v2/type/${type}`)
+                .then(res => {
+                   
+                    if(typeFilters.length === 1) setPokemons([])
 
-            .then(res => {
-                
-                const {pokemon} = res.data
-                const pokemons = pokemon?.map(pokemon => pokemon.pokemon)
-                setPokemons(pokemons)
-                console.log(pokemons)
-
-            })
+                    setPokemons(prevPokemons => [...prevPokemons, ...res])
+                    
+                })
+        })
+    
 
     }, [typeFilters])
 

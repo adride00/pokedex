@@ -6,7 +6,6 @@ const Types = ({type, setTypeFilters}) => {
     const [types, setTypes] = useState([])
 
     const handleChange = (e) => {
-        // get id of the checkbox
         const id = e.target.id
         setTypeFilters(prevState => {
             if(e.target.checked) {
