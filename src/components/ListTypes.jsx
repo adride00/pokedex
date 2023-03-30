@@ -3,9 +3,10 @@ import axios from 'axios'
 
 import Types from './Types.jsx'
 
-const ListTypes = () => {
+const ListTypes = ({setPokemons}) => {
 
     const [types, setTypes] = useState([])
+    const [typeFilters, setTypeFilters] = useState([])
 
     useEffect(() => {
         if(!types) return
@@ -17,12 +18,28 @@ const ListTypes = () => {
             })
     }, [])
 
+    useEffect(() => {
+        console.log(typeFilters)
+        if(!typeFilters) return
+        axios.get(`https://pokeapi.co/api/v2/type/${typeFilters}`)
+
+            .then(res => {
+                
+                const {pokemon} = res.data
+                const pokemons = pokemon?.map(pokemon => pokemon.pokemon)
+                setPokemons(pokemons)
+                console.log(pokemons)
+
+            })
+
+    }, [typeFilters])
+
   return (
     <>
         <ul class="nav justify-content-center gap-3 container">
             {
                 types.map((type, index) => {
-                    return <Types key={type.name} type={type} />
+                    return <Types key={type.name} type={type} setTypeFilters={setTypeFilters}/>
                 })
             }
         </ul>

@@ -22,7 +22,7 @@ const ListPokemons = () => {
     <>
         
         <Search setPokemons={setPokemons} />
-        <ListTypes />
+        <ListTypes setPokemons={setPokemons} />
         <main className=''>
           <div className="container grid">
             <div className="row g-col-4">
