@@ -1,26 +1,10 @@
-import axios from 'axios'
-import React, {useState} from 'react'
+
+import useSearch from '../hooks/useSearch'
 
 const Search = ({setPokemons}) => {
 
-    const [search, setSearch] = useState('')
+    const {search, setSearch, handleSubmit, handleChange} = useSearch({setPokemons}) 
 
-   const handleSubmit = (event) => {
-    event.preventDefault()
-
-    const res = [
-        {
-            name: search,
-            url: 'https://pokeapi.co/api/v2/pokemon/' + search 
-        }
-    ]
-    setPokemons(res)
-  }
-
-  const handleChange = (event) => {
-    let query = event.target.value.toLowerCase()
-    setSearch(query)
-  }
 
   return (
     <>

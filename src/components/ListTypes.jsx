@@ -23,9 +23,11 @@ const ListTypes = ({setPokemons}) => {
         if(!typeFilters) return
         
         typeFilters.forEach(type => {
+      
             getData(`https://pokeapi.co/api/v2/type/${type}`)
+           
                 .then(res => {
-                   
+                
                     if(typeFilters.length === 1) setPokemons([])
 
                     setPokemons(prevPokemons => [...prevPokemons, ...res])

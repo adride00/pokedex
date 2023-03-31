@@ -1,23 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 import Card from './Card.jsx'
 import Search from './Search'
 import ListTypes from './ListTypes'
+import usePokemon from '../hooks/usePokemon'
+
 const ListPokemons = () => {
 
-  const [pokemons, setPokemons] = useState([])
+  const [pokemons, setPokemons] = usePokemon()
 
-  useEffect(() => {
-    if(!pokemons) return
-    fetch('https://pokeapi.co/api/v2/pokemon')
-      .then(res => res.json())
-      .then(data => {
-        const {results} = data  
-        
-        setPokemons(results)
-      })
-
-  }, [])
-  
   return (
     <>
         
