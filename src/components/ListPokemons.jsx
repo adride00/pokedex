@@ -1,9 +1,8 @@
-import {useEffect} from 'react'
+
 import Card from './Card.jsx'
 import Search from './Search'
 import ListTypes from './ListTypes'
 import usePokemon from '../hooks/usePokemon'
-
 const ListPokemons = () => {
 
   const [pokemons, setPokemons] = usePokemon()
