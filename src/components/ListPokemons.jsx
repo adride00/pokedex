@@ -4,11 +4,10 @@ import Search from './Search'
 import ListTypes from './ListTypes'
 import usePokemon from '../hooks/usePokemon'
 const ListPokemons = () => {
-
   const [pokemons, setPokemons] = usePokemon()
 
   return (
-    <>    
+    <>
         <Search />
         <ListTypes setPokemons={setPokemons} />
         <main className=''>
@@ -19,7 +18,7 @@ const ListPokemons = () => {
                   return <Card key={index + Math.random()} pokemon={pokemon} />
                 })
               }
-              
+
             </div>
           </div>
         </main>

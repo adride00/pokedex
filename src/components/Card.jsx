@@ -1,48 +1,46 @@
-import { useState, useEffect } from 'react';
-import {typesPokemons, font, stats} from './styles/card.js'
+import { useState, useEffect } from 'react'
+import { typesPokemons, font } from './styles/card.js'
+// eslint-disable-next-line no-unused-vars
 import BadgeStats from './BadgeStats.jsx'
 
-const Card = ({pokemon}) => {
-
+const Card = ({ pokemon }) => {
   const [dataPokemon, setDataPokemon] = useState([])
-  const [tipoPokemon, setTipoPokemon] = useState([]) 
+  const [tipoPokemon, setTipoPokemon] = useState([])
   const [stats, setStats] = useState([])
 
   useEffect(() => {
-    if(!pokemon) return
+    if (!pokemon) return
     fetch(pokemon.url)
-        .then(res => res.json())
-        .then(data => {
-            setDataPokemon(data)
+      .then(res => res.json())
+      .then(data => {
+        setDataPokemon(data)
 
-            const {types} = data
-            const typeName = types[0].type.name
-            
-            const typeStyle = typesPokemons.find(type => type.nombre === typeName)
-          
-            setTipoPokemon(typeStyle.style)
-            setStats([
-                {
-                    name: 'HP',
-                    value: data?.stats[0].base_stat,
-                    icon: 'src/assets/heart-attack.png'
-                },
-                {
-                    name: 'Attack',
-                    value: data?.stats[1].base_stat,
-                    icon: 'src/assets/battle.png'
-                },
-                {
-                    name: 'Defense',
-                    value: data?.stats[2].base_stat,
-                    icon: 'src/assets/defence.png'
-                }
+        const { types } = data
+        const typeName = types[0].type.name
 
-                
-            ])
-            
-        })
-  }, []);
+        const typeStyle = typesPokemons.find(type => type.nombre === typeName)
+
+        setTipoPokemon(typeStyle.style)
+        setStats([
+          {
+            name: 'HP',
+            value: data?.stats[0].base_stat,
+            icon: 'src/assets/heart-attack.png'
+          },
+          {
+            name: 'Attack',
+            value: data?.stats[1].base_stat,
+            icon: 'src/assets/battle.png'
+          },
+          {
+            name: 'Defense',
+            value: data?.stats[2].base_stat,
+            icon: 'src/assets/defence.png'
+          }
+
+        ])
+      })
+  }, [])
   return (
     <>
         <div className="col-4 ">
@@ -71,10 +69,10 @@ const Card = ({pokemon}) => {
                 <small className="text-body-secondary d-flex justify-content-center gap-2">
                     {
                         dataPokemon.types?.map((type, index) => {
-                            return <span key={index} className="badge bg-dark text-bg-primary">{type.type.name}</span>
+                          return <span key={index} className="badge bg-dark text-bg-primary">{type.type.name}</span>
                         })
                     }
-                
+
                 </small>
             </div>
             </div>
