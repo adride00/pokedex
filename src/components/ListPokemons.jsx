@@ -8,9 +8,8 @@ const ListPokemons = () => {
   const [pokemons, setPokemons] = usePokemon()
 
   return (
-    <>
-        
-        <Search setPokemons={setPokemons} />
+    <>    
+        <Search />
         <ListTypes setPokemons={setPokemons} />
         <main className=''>
           <div className="container grid">

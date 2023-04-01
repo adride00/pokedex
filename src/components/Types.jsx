@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {typesPokemons} from './styles/card.js'
+
 const Types = ({type, setTypeFilters}) => {
 
     const [stylePokemon, setStylePokemon] = useState({})

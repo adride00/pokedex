@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import {PokeContext} from '../context/pokeContext.jsx'
 
-export default function useSearch ({setPokemons}) {
+export default function useSearch () {
+
     const [search, setSearch] = useState('')
-
-   const handleSubmit = (event) => {
+    const {setPokemons} = useContext(PokeContext)
+    
+    const handleSubmit = (event) => {
     
     event.preventDefault()
 

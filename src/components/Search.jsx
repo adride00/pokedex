@@ -1,9 +1,9 @@
 
 import useSearch from '../hooks/useSearch'
+import usePokemon from '../hooks/usePokemon'
+const Search = () => {
 
-const Search = ({setPokemons}) => {
-
-    const {search, setSearch, handleSubmit, handleChange} = useSearch({setPokemons}) 
+    const {search, setSearch, handleSubmit, handleChange} = useSearch() 
 
 
   return (
