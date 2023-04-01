@@ -8,20 +8,20 @@ const ListPokemons = () => {
 
   return (
     <>
-        <Search />
-        <ListTypes setPokemons={setPokemons} />
-        <main className=''>
-          <div className="container grid">
-            <div className="row g-col-4">
-              {
+      <Search />
+      <ListTypes setPokemons={setPokemons} />
+      <main className=''>
+        <div className='container grid'>
+          <div className='row g-col-4'>
+            {
                 pokemons?.map((pokemon, index) => {
                   return <Card key={index + Math.random()} pokemon={pokemon} />
                 })
               }
 
-            </div>
           </div>
-        </main>
+        </div>
+      </main>
     </>
   )
 }

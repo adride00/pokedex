@@ -13,14 +13,14 @@ export default class BadgeStats extends React.Component {
   render () {
     return (
       <>
-        <div className="col-3 bg-light-subtle rounded-3 border">
+        <div className='col-3 bg-light-subtle rounded-3 border'>
           <i>
-            <img src={this.props.stat.icon} width="25" alt="" />
+            <img src={this.props.stat.icon} width='25' alt='' />
           </i>
-          <p className="" style={stats}>
+          <p className='' style={stats}>
             {this.props.stat.name}
           </p>
-          <p className="fw-bold">{this.props.stat.value}</p>
+          <p className='fw-bold'>{this.props.stat.value}</p>
         </div>
       </>
     )

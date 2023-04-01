@@ -1,15 +1,16 @@
-import {createContext, useState} from 'react';
+import { createContext, useState } from 'react'
 
-export const PokeContext = createContext();
+export const PokeContext = createContext()
 
-export function PokemonProvider ({children}) {
-    const [pokemons, setPokemons] = useState([]);
-    return (
-        <PokeContext.Provider value={{
-            pokemons,
-            setPokemons
-        }}>
-            {children}
-        </PokeContext.Provider>
-    )
+export function PokemonProvider ({ children }) {
+  const [pokemons, setPokemons] = useState([])
+  return (
+    <PokeContext.Provider value={{
+      pokemons,
+      setPokemons
+    }}
+    >
+      {children}
+    </PokeContext.Provider>
+  )
 }

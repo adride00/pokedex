@@ -43,41 +43,41 @@ const Card = ({ pokemon }) => {
   }, [])
   return (
     <>
-        <div className="col-4 ">
+      <div className='col-4 '>
 
-            <div className="card d-flex align-items-center w-75 rounded mt-2" style={tipoPokemon}>
-            <div className="d-flex justify-content-between">
-                <div>
-                    <img src="src/assets/pokebola.png" alt="" width="25" />
-                </div>
-                <span className="fw-bold">
-                    # {dataPokemon.id}
-                </span>
+        <div className='card d-flex align-items-center w-75 rounded mt-2' style={tipoPokemon}>
+          <div className='d-flex justify-content-between'>
+            <div>
+              <img src='src/assets/pokebola.png' alt='' width='25' />
             </div>
-            <img src={dataPokemon.sprites?.other.dream_world.front_default ? dataPokemon.sprites?.other.dream_world.front_default : dataPokemon.sprites?.front_default} width='150px' height='150px' className="p-3 bg-ligth d-flex align-items-center" alt="..." />
-            <div className="card-body w-100">
-                <h5 className="card-title text-center fw-bolder" style={font}>{dataPokemon.name}</h5>
-                <div className=" text-center">
-                <div className="row gap-2 d-flex justify-content-center">
-                    {
+            <span className='fw-bold'>
+              # {dataPokemon.id}
+            </span>
+          </div>
+          <img src={dataPokemon.sprites?.other.dream_world.front_default ? dataPokemon.sprites?.other.dream_world.front_default : dataPokemon.sprites?.front_default} width='150px' height='150px' className='p-3 bg-ligth d-flex align-items-center' alt='...' />
+          <div className='card-body w-100'>
+            <h5 className='card-title text-center fw-bolder' style={font}>{dataPokemon.name}</h5>
+            <div className=' text-center'>
+              <div className='row gap-2 d-flex justify-content-center'>
+                {
                         stats.map((stat, index) => <BadgeStats key={index} stat={stat} />)
                     }
-                </div>
-                </div>
+              </div>
             </div>
-            <div className="card-footer w-100">
-                <small className="text-body-secondary d-flex justify-content-center gap-2">
-                    {
+          </div>
+          <div className='card-footer w-100'>
+            <small className='text-body-secondary d-flex justify-content-center gap-2'>
+              {
                         dataPokemon.types?.map((type, index) => {
-                          return <span key={index} className="badge bg-dark text-bg-primary">{type.type.name}</span>
+                          return <span key={index} className='badge bg-dark text-bg-primary'>{type.type.name}</span>
                         })
                     }
 
-                </small>
-            </div>
-            </div>
-
+            </small>
+          </div>
         </div>
+
+      </div>
     </>
   )
 }
