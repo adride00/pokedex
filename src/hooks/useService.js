@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export function useService (url, tipoPeticion) {
+export default function useService (url, tipoPeticion) {
   const [service, setrService] = useState({
     data: null,
     loading: true,
