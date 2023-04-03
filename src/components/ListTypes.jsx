@@ -1,21 +1,20 @@
 
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import getData from '../helpers/getData'
 import Types from './Types.jsx'
+import useService from '../hooks/useService'
 
 const ListTypes = ({ setPokemons }) => {
   const [types, setTypes] = useState([])
   const [typeFilters, setTypeFilters] = useState([])
-
+  const { data, loading, error } = useService('https://pokeapi.co/api/v2/type', 'fetch')
   useEffect(() => {
     if (!types) return
-    axios.get('https://pokeapi.co/api/v2/type').then((res) => {
-      const { results } = res.data
-
-      setTypes(results)
-    })
-  }, [])
+    if (data) {
+      console.log(data, loading, error)
+      setTypes(data?.results)
+    }
+  }, [data])
 
   useEffect(() => {
     if (!typeFilters) return

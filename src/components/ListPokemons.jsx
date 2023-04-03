@@ -11,7 +11,7 @@ const ListPokemons = () => {
   const { data, loading, error } = useService('https://pokeapi.co/api/v2/pokemon', 'axios')
 
   useEffect(() => {
-    console.log(data, loading, error)
+    // console.log(data, loading, error)
     setPokemons(data?.results)
   }, [data])
 
