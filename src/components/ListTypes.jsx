@@ -31,7 +31,7 @@ const ListTypes = ({ setPokemons }) => {
 
   return (
     <>
-      <ul class='nav justify-content-center gap-3 container'>
+      <ul className='nav justify-content-center gap-3 container'>
         {types.map((type, index) => {
           return (
             <Types

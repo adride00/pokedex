@@ -3,8 +3,12 @@ import Card from './Card.jsx'
 import Search from './Search'
 import ListTypes from './ListTypes'
 import usePokemon from '../hooks/usePokemon'
+import { useService } from '../hooks/useService'
+
 const ListPokemons = () => {
   const [pokemons, setPokemons] = usePokemon()
+  const { data, loading, error } = useService('https://pokeapi.co/api/v2/pokemon', 'axios')
+  console.log(data, loading, error)
 
   return (
     <>
