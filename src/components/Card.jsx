@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { typesPokemons, font } from './styles/card.js'
-// eslint-disable-next-line no-unused-vars
+import PokeNotFound from './PokeNotFound.jsx'
 import BadgeStats from './BadgeStats.jsx'
-
+import Loading from './Loading.jsx'
+import usePokemon from '../hooks/usePokemon'
 const Card = ({ pokemon }) => {
   const [dataPokemon, setDataPokemon] = useState([])
   const [tipoPokemon, setTipoPokemon] = useState([])
   const [stats, setStats] = useState([])
+  const [pokemons, setPokemons] = usePokemon()
 
   useEffect(() => {
     if (!pokemon) return
@@ -39,6 +41,10 @@ const Card = ({ pokemon }) => {
           }
 
         ])
+      })
+      .catch(err => {
+        console.log(err)
+        setPokemons([])
       })
   }, [])
   return (

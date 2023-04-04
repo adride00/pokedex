@@ -11,7 +11,7 @@ const ListTypes = ({ setPokemons }) => {
   useEffect(() => {
     if (!types) return
     if (data) {
-      console.log(data, loading, error)
+      // console.log(data, loading, error)
       setTypes(data?.results)
     }
   }, [data])
