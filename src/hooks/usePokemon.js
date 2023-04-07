@@ -1,8 +1,24 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { PokeContext } from '../context/pokeContext.jsx'
+import useService from './useService.js'
 
-export default function usePokemon () {
+export default function usePokemon (url) {
   const { pokemons, setPokemons } = useContext(PokeContext)
+  const { data, loading, error } = useService(url, 'axios')
 
+  useEffect(() => {
+    if (data) {
+      const { results } = data
+      const promises = results.map(async (pokemon) => {
+        const response = await fetch(pokemon.url)
+        const data = await response.json()
+        return data
+      })
+      Promise.all(promises).then((pokemons) => {
+        // console.log(pokemons)
+        setPokemons(pokemons)
+      })
+    }
+  }, [data])
   return [pokemons, setPokemons]
 }

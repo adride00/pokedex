@@ -10,27 +10,17 @@ import Loading from './components/Loading'
 import PokeNotFound from './components/PokeNotFound'
 import ListPokemons from './components/ListPokemons'
 
+const urlApi = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20'
 function App () {
-  const [pokemons, setPokemons] = usePokemon()
-  const { data, loading, error } = useService('https://pokeapi.co/api/v2/pokemon', 'axios')
-
-  useEffect(() => {
-    // console.log(data, loading, error)
-    setPokemons(data?.results)
-  }, [data])
+  usePokemon(urlApi)
 
   return (
     <>
       <main className='vw-100 vh-100'>
         <NavBar />
         <Search />
-        <ListTypes setPokemons={setPokemons} />
-        {
-          loading && <Loading />
-        }
-
-        <ListPokemons pokemons={pokemons} />
-
+        <ListTypes />
+        <ListPokemons />
       </main>
     </>
   )

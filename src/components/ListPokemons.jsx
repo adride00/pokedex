@@ -1,9 +1,9 @@
 
+import { useContext } from 'react'
 import Card from './Card.jsx'
-import Loading from './Loading'
-import usePokemon from '../hooks/usePokemon'
+import { PokeContext } from '../context/pokeContext.jsx'
 const ListPokemons = () => {
-  const [pokemons, setPokemons] = usePokemon()
+  const { pokemons } = useContext(PokeContext)
 
   return (
     <>

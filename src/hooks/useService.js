@@ -50,6 +50,6 @@ export default function useService (url, tipoPeticion) {
   }, [url, tipoPeticion])
 
   return {
-    ...service, getService
+    ...service
   }
 }
