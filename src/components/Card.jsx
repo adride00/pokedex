@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { typesPokemons, font } from './styles/card.js'
-import PokeNotFound from './PokeNotFound.jsx'
 import BadgeStats from './BadgeStats.jsx'
-import Loading from './Loading.jsx'
 import usePokemon from '../hooks/usePokemon'
 const Card = ({ pokemon }) => {
   const [dataPokemon, setDataPokemon] = useState([])

@@ -1,7 +1,6 @@
 
 import { useEffect } from 'react'
 import NavBar from './components/NavBar'
-import ListPokemons from './components/ListPokemons'
 import './App.css'
 import Search from './components/Search'
 import ListTypes from './components/ListTypes'
@@ -9,6 +8,8 @@ import usePokemon from './hooks/usePokemon'
 import useService from './hooks/useService'
 import Loading from './components/Loading'
 import PokeNotFound from './components/PokeNotFound'
+import ListPokemons from './components/ListPokemons'
+
 function App () {
   const [pokemons, setPokemons] = usePokemon()
   const { data, loading, error } = useService('https://pokeapi.co/api/v2/pokemon', 'axios')
@@ -25,13 +26,11 @@ function App () {
         <Search />
         <ListTypes setPokemons={setPokemons} />
         {
-          loading
-            ? <Loading />
-            : <ListPokemons />
+          loading && <Loading />
         }
-        {
-          pokemons && <PokeNotFound />
-        }
+
+        <ListPokemons pokemons={pokemons} />
+
       </main>
     </>
   )
