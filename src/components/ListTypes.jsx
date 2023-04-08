@@ -1,13 +1,13 @@
 
 import { useState, useEffect } from 'react'
-import getData from '../helpers/getData'
+
 import Types from './Types.jsx'
 import useService from '../hooks/useService'
-
+const urlTypes = 'https://pokeapi.co/api/v2/type/'
 const ListTypes = ({ setPokemons }) => {
   const [types, setTypes] = useState([])
+  const { data } = useService(urlTypes, 'fetch')
   const [typeFilters, setTypeFilters] = useState([])
-  const { data, loading, error } = useService('https://pokeapi.co/api/v2/type', 'fetch')
   useEffect(() => {
     if (!types) return
     if (data) {
@@ -15,17 +15,11 @@ const ListTypes = ({ setPokemons }) => {
       setTypes(data?.results)
     }
   }, [data])
-
   useEffect(() => {
     if (!typeFilters) return
-
-    typeFilters.forEach((type) => {
-      getData(`https://pokeapi.co/api/v2/type/${type}`).then((res) => {
-        if (typeFilters.length === 1) setPokemons([])
-
-        setPokemons((prevPokemons) => [...prevPokemons, ...res])
-      })
-    })
+    console.log('sdd', typeFilters)
+    
+    // setPokemons((prevPokemons) => [...prevPokemons, ...results])
   }, [typeFilters])
 
   return (
