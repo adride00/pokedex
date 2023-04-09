@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import useSearch from '../hooks/useSearch'
 import PokeNotFound from './PokeNotFound'
 import { PokeContext } from '../context/pokeContext.jsx'
+import Loading from './Loading'
 const Search = () => {
-  const { search, handleSubmit, handleChange } = useSearch()
+  const { search, handleSubmit, handleChange, loading } = useSearch()
   const { pokemons, errorSearch } = useContext(PokeContext)
   return (
     <>
@@ -34,6 +35,9 @@ const Search = () => {
           </div>
         </div>
       </div>
+      {
+        (loading) && <Loading />
+      }
       {
         (errorSearch && pokemons) && <PokeNotFound />
       }

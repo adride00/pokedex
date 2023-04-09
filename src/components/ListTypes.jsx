@@ -9,7 +9,7 @@ const ListTypes = () => {
   const [types, setTypes] = useState([])
   const { data } = useService(urlTypes, 'fetch')
   const [typeFilters, setTypeFilters] = useState([])
-  const { pokemons, setPokemons, setErrorSearch } = useContext(PokeContext)
+  const { setPokemons, setErrorSearch } = useContext(PokeContext)
   useEffect(() => {
     if (!types) return
     if (data) {

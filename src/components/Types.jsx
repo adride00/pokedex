@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { typesPokemons } from './styles/card.js'
-import useType from '../hooks/useType'
 const Types = ({ type, setTypeFilters }) => {
   const [stylePokemon, setStylePokemon] = useState({})
 
   // useType()
   // console.log('type', type)
   const handleChange = (e) => {
-    const { checked, value } = e.target
+    const { checked } = e.target
     if (checked) {
       setTypeFilters((prevTypeFilters) => [...prevTypeFilters, e.target.id])
     } else {
