@@ -7,7 +7,6 @@ import ListTypes from './components/ListTypes'
 import usePokemon from './hooks/usePokemon'
 import useService from './hooks/useService'
 import Loading from './components/Loading'
-import PokeNotFound from './components/PokeNotFound'
 import ListPokemons from './components/ListPokemons'
 
 const urlApi = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20'

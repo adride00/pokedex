@@ -1,8 +1,10 @@
+import React, { useContext } from 'react'
 import useSearch from '../hooks/useSearch'
-
+import PokeNotFound from './PokeNotFound'
+import { PokeContext } from '../context/pokeContext.jsx'
 const Search = () => {
   const { search, handleSubmit, handleChange } = useSearch()
-
+  const { pokemons, errorSearch } = useContext(PokeContext)
   return (
     <>
       <div className='container mt-3'>
@@ -32,6 +34,9 @@ const Search = () => {
           </div>
         </div>
       </div>
+      {
+        (errorSearch && pokemons) && <PokeNotFound />
+      }
     </>
   )
 }

@@ -9,7 +9,7 @@ const ListTypes = () => {
   const [types, setTypes] = useState([])
   const { data } = useService(urlTypes, 'fetch')
   const [typeFilters, setTypeFilters] = useState([])
-  const { pokemons, setPokemons } = useContext(PokeContext)
+  const { pokemons, setPokemons, setErrorSearch } = useContext(PokeContext)
   useEffect(() => {
     if (!types) return
     if (data) {
@@ -20,7 +20,7 @@ const ListTypes = () => {
   useEffect(() => {
     if (!typeFilters) return
     setPokemons([])
-    console.log(typeFilters)
+
     const promises = typeFilters.map((type) => {
       return fetch(`https://pokeapi.co/api/v2/type/${type}`)
     })
@@ -31,7 +31,7 @@ const ListTypes = () => {
       .then((results) => {
         const pokemons = results.map((result) => result.pokemon)
         // console.log(pokemons)
-
+        setErrorSearch(false)
         const pokemonsFiltered = pokemons.flat().map((pokemon) => pokemon.pokemon)
         // console.log(pokemonsFiltered)
         pokemonsFiltered.map((pokemon) => {
