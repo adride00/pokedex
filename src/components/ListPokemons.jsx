@@ -8,8 +8,8 @@ const ListPokemons = () => {
   return (
     <>
       <main className=''>
-        <div className='container grid'>
-          <div className='row g-col-4'>
+        <div className='container '>
+          <div className='row'>
             {
                 pokemons?.map((pokemon, index) => {
                   return <Card key={index + Math.random()} pokemon={pokemon} />

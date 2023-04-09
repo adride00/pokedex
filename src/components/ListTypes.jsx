@@ -20,6 +20,7 @@ const ListTypes = () => {
   useEffect(() => {
     if (!typeFilters) return
     setPokemons([])
+    // refactorizar para no realizar las peticiones que ya se han realizado
 
     const promises = typeFilters.map((type) => {
       return fetch(`https://pokeapi.co/api/v2/type/${type}`)

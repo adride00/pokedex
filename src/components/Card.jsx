@@ -33,7 +33,7 @@ const Card = ({ pokemon }) => {
   }, [])
   return (
     <>
-      <div className='col-4 '>
+      <div className='col-lg-4 col-md-6 col-sm-12 mb-4'>
 
         <div className='card d-flex align-items-center w-75 rounded mt-2' style={tipoPokemon}>
           <div className='d-flex justify-content-between'>
