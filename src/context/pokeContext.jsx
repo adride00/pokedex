@@ -4,11 +4,14 @@ export const PokeContext = createContext()
 
 export function PokemonProvider ({ children }) {
   const [pokemons, setPokemons] = useState([])
+  const [errorSearch, setErrorSearch] = useState(false)
 
   return (
     <PokeContext.Provider value={{
       pokemons,
-      setPokemons
+      setPokemons,
+      errorSearch,
+      setErrorSearch
     }}
     >
       {children}

@@ -1,15 +1,15 @@
 
+import { useContext } from 'react'
 import Card from './Card.jsx'
-import Loading from './Loading'
-import usePokemon from '../hooks/usePokemon'
+import { PokeContext } from '../context/pokeContext.jsx'
 const ListPokemons = () => {
-  const [pokemons, setPokemons] = usePokemon()
+  const { pokemons } = useContext(PokeContext)
 
   return (
     <>
       <main className=''>
-        <div className='container grid'>
-          <div className='row g-col-4'>
+        <div className='container '>
+          <div className='row'>
             {
                 pokemons?.map((pokemon, index) => {
                   return <Card key={index + Math.random()} pokemon={pokemon} />

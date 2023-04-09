@@ -1,13 +1,15 @@
 
-import { useState, useEffect } from 'react'
-import getData from '../helpers/getData'
+import { useState, useEffect, useContext } from 'react'
 import Types from './Types.jsx'
 import useService from '../hooks/useService'
+import { PokeContext } from '../context/pokeContext.jsx'
+const urlTypes = 'https://pokeapi.co/api/v2/type/'
 
-const ListTypes = ({ setPokemons }) => {
+const ListTypes = () => {
   const [types, setTypes] = useState([])
+  const { data } = useService(urlTypes, 'fetch')
   const [typeFilters, setTypeFilters] = useState([])
-  const { data, loading, error } = useService('https://pokeapi.co/api/v2/type', 'fetch')
+  const { setPokemons, setErrorSearch } = useContext(PokeContext)
   useEffect(() => {
     if (!types) return
     if (data) {
@@ -15,17 +17,32 @@ const ListTypes = ({ setPokemons }) => {
       setTypes(data?.results)
     }
   }, [data])
-
   useEffect(() => {
     if (!typeFilters) return
+    setPokemons([])
+    // refactorizar para no realizar las peticiones que ya se han realizado
 
-    typeFilters.forEach((type) => {
-      getData(`https://pokeapi.co/api/v2/type/${type}`).then((res) => {
-        if (typeFilters.length === 1) setPokemons([])
-
-        setPokemons((prevPokemons) => [...prevPokemons, ...res])
-      })
+    const promises = typeFilters.map((type) => {
+      return fetch(`https://pokeapi.co/api/v2/type/${type}`)
     })
+    Promise.all(promises)
+      .then((responses) => {
+        return Promise.all(responses.map((response) => response.json()))
+      })
+      .then((results) => {
+        const pokemons = results.map((result) => result.pokemon)
+        // console.log(pokemons)
+        setErrorSearch(false)
+        const pokemonsFiltered = pokemons.flat().map((pokemon) => pokemon.pokemon)
+        // console.log(pokemonsFiltered)
+        pokemonsFiltered.map((pokemon) => {
+          return fetch(pokemon.url)
+            .then((response) => response.json())
+            .then((data) => {
+              setPokemons((prev) => [...prev, data])
+            })
+        })
+      })
   }, [typeFilters])
 
   return (
