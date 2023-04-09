@@ -11,7 +11,8 @@ const Types = ({ type, setTypeFilters }) => {
     if (checked) {
       setTypeFilters((prevTypeFilters) => [...prevTypeFilters, e.target.id])
     } else {
-      setTypeFilters((prevTypeFilters) => prevTypeFilters.filter((type) => type !== value))
+      // quitar el tipo de filtro
+      setTypeFilters((prevTypeFilters) => prevTypeFilters.filter((type) => type !== e.target.id))
     }
   }
 
