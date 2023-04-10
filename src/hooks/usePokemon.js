@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { PokeContext } from '../context/pokeContext.jsx'
 import useService from './useService.js'
 
 export default function usePokemon (url) {
   const { pokemons, setPokemons, setNextPage, setPreviusPage } = useContext(PokeContext)
-  const { data, loading, error } = useService(url, 'axios')
+  const { data } = useService(url, 'axios')
 
   useEffect(() => {
     if (data) {

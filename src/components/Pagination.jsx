@@ -5,7 +5,7 @@ const Pagination = () => {
   const { setPreviusPage, nextPage, setNextPage, setPokemons, previusPage } = useContext(PokeContext)
   const handlePreviusPage = () => {
     if (previusPage === null) return
-    console.log(previusPage)
+    // console.log(previusPage)
     axios.get(previusPage)
       .then((response) => {
         setPokemons([])
@@ -25,7 +25,7 @@ const Pagination = () => {
       })
   }
   const handleNextPage = () => {
-    console.log(nextPage)
+    // console.log(nextPage)
     axios.get(nextPage)
       .then((response) => {
         setNextPage(response.data.next)
